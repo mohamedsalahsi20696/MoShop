@@ -1,0 +1,12 @@
+.btn-bg-main:hover,
+.delete-cart:hover {
+  background-color: var(--btn-bg-secondary) !important;
+}
+
+.delete-cart {
+  border: solid 1px var(--btn-bg-secondary);
+}
+
+.delete-cart:hover i {
+  color: var(--text-main) !important;
+}

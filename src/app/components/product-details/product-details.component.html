@@ -1,0 +1,47 @@
+<div class="mt-5 py-5">
+  <div class="container">
+    <!-- <div class="row">
+      <div class=" col-12 m-auto ">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let item of productDetails?.images">
+            <img [src]="item" class=" alt="">
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-4">
+        <div>
+          <!-- <img [src]="productDetails?.imageCover" class="w-100 rounded-3" alt=""> -->
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let item of productDetails?.images">
+              <img [src]="item" class="w-100" alt="">
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
+      <div class="col-md-8 d-flex align-items-center">
+        <div class="w-100">
+          <h2 class="main-color fw-bold">{{productDetails?.title}}</h2>
+          <p class="">{{productDetails?.description}}</p>
+          <h6><span class="main-color fw-bold ">Category : </span> {{productDetails?.category?.name}}</h6>
+          <h6><span class="main-color fw-bold">Brand : </span> {{productDetails?.brand?.name}}</h6>
+
+          <div class="d-flex justify-content-between font-sm">
+            <h6><span class="main-color fw-bold">Price : </span> {{productDetails?.price|currency}} </h6>
+            <span class="">
+              <i class="fa-solid fa-star main-color">{{productDetails?.ratingsAverage}}</i>
+            </span>
+          </div>
+
+          <div>
+            <button id="add_to_cart" class="btn bg-main btn-bg-main my-2 w-100"
+              (click)="addToCart(productDetails?._id)">
+              + Add To Cart </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="header">
+    <h3>Categories</h3>
+  </div>
+  <div class=" col-12 m-auto ">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let item of categories">
+        <a [routerLink]="['/categoryDetails',item._id]">
+          <div class="cursor-pointer">
+            <img [src]="item.image" class="category-slider" alt="">
+            <h5 class="my-1">{{item.name}}</h5>
+          </div>
+        </a>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</div>

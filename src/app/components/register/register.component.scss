@@ -1,0 +1,17 @@
+#btn-register:hover,
+.showPassword:hover,
+.showRePassword:hover {
+  background-color: var(--btn-bg-secondary) !important;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none;
+}
+
+.showPassword,
+.showRePassword {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

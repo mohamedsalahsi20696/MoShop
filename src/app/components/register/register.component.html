@@ -1,0 +1,107 @@
+<div class="w-75 m-auto my-5 py-5 text-capitalize">
+
+  <ul *ngIf="errorMessage" class="alert alert-danger text-center">
+    <li>{{errorMessage}}</li>
+  </ul>
+
+  <form [formGroup]="regForm" class="p-5 rounded shadow vstack gap-2" (ngSubmit)="registerUser(regForm)">
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="name" placeholder="Name" id="name" [ngClass]="{
+        'is-valid':!regForm.get('name')?.errors && regForm.get('name')?.touched,
+        'is-invalid':regForm.get('name')?.errors && regForm.get('name')?.touched
+      }">
+      <ul *ngIf="regForm.get('name')?.errors && regForm.get('name')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="regForm.get('name')?.getError('required')">Name is required</li>
+        <li *ngIf="regForm.get('name')?.getError('minlength')">Name min 3</li>
+        <li *ngIf="regForm.get('name')?.getError('maxlength')">Name max 15</li>
+      </ul>
+      <label for="name">Name</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="email" placeholder="Email" id="email" [ngClass]="{
+        'is-valid':!regForm.get('email')?.errors && regForm.get('email')?.touched,
+        'is-invalid':regForm.get('email')?.errors && regForm.get('email')?.touched
+      }">
+      <ul *ngIf="regForm.get('email')?.errors && regForm.get('email')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="regForm.get('email')?.getError('required')">Email is required</li>
+        <li *ngIf="regForm.get('email')?.getError('email')">Email not valid</li>
+      </ul>
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating position-relative">
+      <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+        placeholder="Password" id="password" [ngClass]="{
+          'is-valid':!regForm.get('password')?.errors && regForm.get('password')?.touched,
+          'is-invalid':regForm.get('password')?.errors && regForm.get('password')?.touched
+        }">
+      <ul *ngIf="regForm.get('password')?.errors && regForm.get('password')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="regForm.get('password')?.getError('required')">password is required</li>
+        <li *ngIf="regForm.get('password')?.getError('pattern')">password mast be contains upper, lower character and
+          numbers</li>
+      </ul>
+
+      <label for="password">Password</label>
+
+      <div class="showPassword btn btn-bg-main me-5 mt-2 p-2 d-flex justify-content-center align-items-center"
+        (click)="changeShowPassword()">
+        <div *ngIf="showPassword">
+          <i class="fa-regular fa-eye"></i>
+        </div>
+        <div *ngIf="!showPassword">
+          <i class="fa fa-eye-slash"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating position-relative">
+      <input [type]="showRePassword ? 'text' : 'password'" class="form-control" formControlName="rePassword"
+        placeholder="RePassword" id="rePassword" [ngClass]="{
+        'is-valid':!regForm.get('rePassword')?.errors && regForm.get('rePassword')?.touched,
+        'is-invalid':regForm.get('rePassword')?.errors && regForm.get('rePassword')?.touched
+      }">
+      <ul *ngIf="regForm.get('rePassword')?.errors && regForm.get('rePassword')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="regForm.get('rePassword')?.getError('required')">RePassword is required</li>
+        <li *ngIf="regForm.get('rePassword')?.getError('pattern')">RePassword mast be contains upper, lower character
+          and
+        <li *ngIf="regForm.get('rePassword')?.getError('matchRePassword')">RePassword and Password Not Matched</li>
+      </ul>
+
+      <label for="rePassword">RePassword</label>
+
+      <div class="showRePassword btn btn-bg-main me-5 mt-2 p-2 d-flex justify-content-center align-items-center"
+        (click)="changeShowRePassword()">
+        <div *ngIf="showRePassword">
+          <i class="fa-regular fa-eye"></i>
+        </div>
+        <div *ngIf="!showRePassword">
+          <i class="fa fa-eye-slash"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="phone" placeholder="Phone" id="phone" [ngClass]="{
+        'is-valid':!regForm.get('phone')?.errors && regForm.get('phone')?.touched,
+        'is-invalid':regForm.get('phone')?.errors && regForm.get('phone')?.touched
+      }">
+      <ul *ngIf="regForm.get('phone')?.errors && regForm.get('phone')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="regForm.get('phone')?.getError('required')">Phone is required</li>
+        <li *ngIf="regForm.get('phone')?.getError('pattern')">Phone must be egyption number</li>
+      </ul>
+      <label for="phone">Phone</label>
+    </div>
+
+    <button [disabled]="regForm.invalid" type="submit" id="btn-register" class="btn btn-bg-main my-2">
+      <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></i>
+      <span *ngIf="!isLoading">Register</span>
+    </button>
+  </form>
+
+</div>

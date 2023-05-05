@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row my-5 py-5">
+    <div
+      *ngFor="let item of categories| paginate: {itemsPerPage: limit,currentPage: page,totalItems: count};let i = index"
+      class="col-6 col-md-3">
+      <a [routerLink]="['/categoryDetails',item._id]">
+        <div class=" cursor-pointer my-3">
+          <img [src]="item.image" class="category-slider w-100" alt="">
+          <h5>{{item.name}}</h5>
+        </div>
+      </a>
+    </div>
+    <div class="d-flex justify-content-center">
+      <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

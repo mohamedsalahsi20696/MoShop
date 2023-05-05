@@ -1,0 +1,50 @@
+<div class="w-75 m-auto my-5 py-5 text-capitalize">
+
+  <form [formGroup]="shippingAddress" class="p-5 rounded shadow vstack gap-2" (ngSubmit)="cashOrder(shippingAddress)">
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="details" placeholder="Details" id="details" [ngClass]="{
+        'is-valid':!shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched,
+        'is-invalid':shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched
+      }">
+      <ul *ngIf="shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="shippingAddress.get('details')?.getError('required')">Details is required</li>
+        <li *ngIf="shippingAddress.get('details')?.getError('minlength')">min character 10</li>
+      </ul>
+      <label for="details">Details</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="phone" placeholder="Phone" id="phone" [ngClass]="{
+        'is-valid':!shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched,
+        'is-invalid':shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched
+      }">
+      <ul *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="shippingAddress.get('phone')?.getError('required')">Phone is required</li>
+        <li *ngIf="shippingAddress.get('phone')?.getError('pattern')">Phone must be egyption number</li>
+      </ul>
+      <label for="phone">Phone</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="city" placeholder="City" id="city" [ngClass]="{
+        'is-valid':!shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched,
+        'is-invalid':shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched
+      }">
+      <ul *ngIf="shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="shippingAddress.get('city')?.getError('required')">city is required</li>
+        <li *ngIf="shippingAddress.get('city')?.getError('minlength')">min character 10</li>
+      </ul>
+      <label for="city">City</label>
+    </div>
+
+    <button [disabled]="shippingAddress.invalid" type="submit" id="btn-register" class="btn btn-bg-main my-2">
+      <span>Payment</span>
+    </button>
+  </form>
+
+
+</div>

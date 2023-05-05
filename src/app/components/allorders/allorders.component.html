@@ -1,0 +1,39 @@
+<div class="mt-5 py-5">
+  <div class="container">
+    <div *ngIf="order?.length>0;else noDataYet">
+
+      <div class="p-2 mt-2 shadow border border-1" *ngFor="let myOrder of order;let i=index">
+        <h5>Order {{i+1}}</h5>
+        <h6 class="main-color border-bottom my-2">Total Price : {{myOrder.totalOrderPrice}}</h6>
+
+        <div class="row border-bottom my-2" *ngFor="let item of myOrder?.cartItems">
+          <div class="col-md-1">
+            <img [src]="item?.product?.imageCover" class="w-100" alt="">
+          </div>
+
+          <div class="col-md-11 d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="fw-bold">{{item?.product?.title}}</h6>
+              <h6><span class="main-color fw-bold ">Category : </span> {{item?.product?.category?.name}}</h6>
+              <h6><span class="main-color fw-bold">Brand : </span> {{item?.product?.brand?.name}}</h6>
+
+              <div class="d-flex justify-content-between font-sm">
+                <h6><span class="main-color fw-bold">Price : </span> {{item?.price|currency}} </h6>
+              </div>
+
+            </div>
+            <div>
+              <span class="mx-2">{{item?.count}}</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noDataYet>
+      <app-no-data-yet></app-no-data-yet>
+    </ng-template>
+  </div>
+
+</div>
