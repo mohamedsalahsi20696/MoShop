@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row my-5 py-5">
+    <div *ngFor="let item of brands | paginate: {itemsPerPage: limit,currentPage: page,totalItems: count};let i = index"
+      class="col-4 col-md-2">
+
+      <a [routerLink]="['/brandDetails',item._id]">
+        <div class=" cursor-pointer my-3 border border-3 border-dark">
+          <img [src]="item.image" class="brand-slider w-100" alt="">
+        </div>
+      </a>
+    </div>
+    <div class="d-flex justify-content-center">
+      <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@use './global_style';
+
+
+.text-main {
+  color: var(--text-main) !important;
+}
+
+.paragraph-main {
+  color: var(--paragraph-main) !important;
+}
+
+.nested-paragraph-main {
+  color: var(--nested-paragraph-main) !important;
+}
+
+.header-main {
+  color: var(--header-main) !important;
+}
+
+.link-main {
+  color: var(--link-main) !important;
+}
+
+.hover-link-main {
+  color: var(--hover-link-main) !important;
+}
+
+.main-color {
+  color: var(--main-color);
+}
+
+.bg-main {
+  background-color: var(--bg-main) !important;
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary) !important;
+}
+
+.bg-title {
+  background-color: var(--bg-title) !important;
+}
+
+.btn-bg-main {
+  color: var(--text-main) !important;
+  background-color: var(--btn-bg-main) !important;
+}
+
+.btn-bg-secondary {
+  color: var(--text-main) !important;
+  background-color: var(--btn-bg-secondary) !important;
+}
+
+.border-color-general {
+  border-color: var(--border-color-general) !important;
+}
+
+.border-color-btn-main {
+  border-color: var(--border-color-btn-main) !important;
+}
+
+.border-color-btn-secondary {
+  border-color: var(--border-color-btn-secondary) !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-sm {
+  font-size: 14px;
+}

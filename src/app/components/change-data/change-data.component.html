@@ -1,0 +1,54 @@
+<div class="w-75 m-auto my-5 py-5 text-capitalize">
+
+  <ul *ngIf="errorMessage" class="alert alert-danger text-center">
+    <li>{{errorMessage}}</li>
+  </ul>
+
+  <form [formGroup]="updateMeForm" class="p-5 rounded shadow vstack gap-2" (ngSubmit)="updateMe(updateMeForm)">
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="name" placeholder="Name" id="name" [ngClass]="{
+        'is-valid':!updateMeForm.get('name')?.errors && updateMeForm.get('name')?.touched,
+        'is-invalid':updateMeForm.get('name')?.errors && updateMeForm.get('name')?.touched
+      }">
+      <ul *ngIf="updateMeForm.get('name')?.errors && updateMeForm.get('name')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="updateMeForm.get('name')?.getError('required')">Name is required</li>
+        <li *ngIf="updateMeForm.get('name')?.getError('minlength')">Name min 3</li>
+        <li *ngIf="updateMeForm.get('name')?.getError('maxlength')">Name max 15</li>
+      </ul>
+      <label for="name">Name</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="email" placeholder="Email" id="email" [ngClass]="{
+        'is-valid':!updateMeForm.get('email')?.errors && updateMeForm.get('email')?.touched,
+        'is-invalid':updateMeForm.get('email')?.errors && updateMeForm.get('email')?.touched
+      }">
+      <ul *ngIf="updateMeForm.get('email')?.errors && updateMeForm.get('email')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="updateMeForm.get('email')?.getError('required')">Email is required</li>
+        <li *ngIf="updateMeForm.get('email')?.getError('email')">Email not valid</li>
+      </ul>
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="phone" placeholder="Phone" id="phone" [ngClass]="{
+        'is-valid':!updateMeForm.get('phone')?.errors && updateMeForm.get('phone')?.touched,
+        'is-invalid':updateMeForm.get('phone')?.errors && updateMeForm.get('phone')?.touched
+      }">
+      <ul *ngIf="updateMeForm.get('phone')?.errors && updateMeForm.get('phone')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="updateMeForm.get('phone')?.getError('required')">Phone is required</li>
+        <li *ngIf="updateMeForm.get('phone')?.getError('pattern')">Phone must be egyption number</li>
+      </ul>
+      <label for="phone">Phone</label>
+    </div>
+
+    <button [disabled]="updateMeForm.invalid" type="submit" id="btn-submit" class="btn btn-bg-main my-2">
+      <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></i>
+      <span *ngIf="!isLoading">Submit</span>
+    </button>
+  </form>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="bg-main-light p-5 my-5">
+
+  <div class="container">
+    <div *ngIf="cartData?.products.length>0;else noDataYet">
+
+      <div class="row">
+        <div class="col-12 col-md-10">
+          <h3>Shipping Cart</h3>
+          <h6 class="text-main ">Total Price :
+            <span class="main-color">{{cartData?.totalCartPrice|currency}}</span>
+          </h6>
+        </div>
+
+        <div class="col-12 col-md-2">
+          <button (click)="clearCart()" class="btn delete-cart ms-2 p-2">
+            <i class="fa-regular fa-trash-can text-danger"></i>
+            Clear Cart
+          </button>
+        </div>
+
+      </div>
+
+      <div class="row border-bottom my-2 p-3 d-flex align-items-center" *ngFor="let item of cartData?.products">
+        <div class="col-12 col-md-2">
+          <img [src]="item?.product?.imageCover" class="w-100" alt="">
+        </div>
+
+        <div class="col-12 col-md-10">
+          <div class="row">
+            <div class="col-12 col-md-9">
+              <h6>{{item?.product?.title}}</h6>
+              <h6><span class="main-color">Brand : </span> {{item?.product?.brand.name}}</h6>
+              <h6><span class="main-color">Category : </span> {{item?.product?.category.name}}</h6>
+              <h6><span class="main-color">Price : </span> {{item?.price|currency}} </h6>
+            </div>
+            <div class="col-12 col-md-3">
+              <button (click)="plusCount(item?.product?._id,item?.count)" class="btn btn-outline-info">+</button>
+              <span class="mx-2">{{item?.count}}</span>
+              <button (click)="minusCount(item?.product?.id,item?.count)" class=" btn btn-outline-info">-</button>
+              <button (click)="deleteCartItem(item?.product?._id)" class="btn delete-cart ms-2 p-2">
+                <i class="fa-regular fa-trash-can text-danger"></i>
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="w-50 mx-3">
+          <a [routerLink]="['/cashOrder',cartData?._id]">
+            <button class="btn btn-bg-main rounded-pill w-100">Cash</button>
+          </a>
+        </div>
+
+        <div class="w-50 mx-3">
+          <a [routerLink]="['/onlineOrder',cartData?._id]">
+            <button class="btn btn-bg-main rounded-pill w-100">Online Payment</button>
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+
+    <ng-template #noDataYet>
+      <app-no-data-yet></app-no-data-yet>
+    </ng-template>
+  </div>
+</div>

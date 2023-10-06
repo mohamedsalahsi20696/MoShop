@@ -1,0 +1,10 @@
+#btn-login:hover,
+.showPassword:hover {
+  background-color: var(--btn-bg-secondary) !important;
+}
+
+.showPassword {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

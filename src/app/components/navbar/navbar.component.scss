@@ -1,0 +1,25 @@
+.navbar {
+  .logo {
+    width: 75px;
+  }
+
+  .active,
+  .nav-link:hover {
+    color: var(--btn-bg-main) !important;
+  }
+
+  // #shopping-cart:hover,
+  // #wishList:hover {
+  //   color: var(--btn-bg-main) !important;
+  // }
+
+  #dropdownId,
+  #logout {
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--btn-bg-main) !important;
+    font-weight: bold;
+  }
+}

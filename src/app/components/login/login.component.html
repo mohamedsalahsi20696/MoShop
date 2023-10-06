@@ -1,0 +1,58 @@
+<div class="w-75 m-auto my-5 py-5 text-capitalize">
+
+  <ul *ngIf="errorMessage" class="alert alert-danger text-center">
+    <li>{{errorMessage}}</li>
+  </ul>
+
+  <form [formGroup]="loginForm" class="p-5 rounded shadow vstack gap-2" (ngSubmit)="loginUser(loginForm)">
+
+    <div class="form-floating">
+      <input type="text" class="form-control" formControlName="email" placeholder="Email" id="email" [ngClass]="{
+        'is-valid':!loginForm.get('email')?.errors && loginForm.get('email')?.touched,
+        'is-invalid':loginForm.get('email')?.errors && loginForm.get('email')?.touched
+      }">
+      <ul *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="loginForm.get('email')?.getError('required')">Email is required</li>
+        <li *ngIf="loginForm.get('email')?.getError('email')">Email not valid</li>
+      </ul>
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating position-relative">
+      <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+        placeholder="Password" id="password" [ngClass]="{
+        'is-valid':!loginForm.get('password')?.errors && loginForm.get('password')?.touched,
+        'is-invalid':loginForm.get('password')?.errors && loginForm.get('password')?.touched
+      }">
+      <ul *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"
+        class="alert alert-danger p-1 text-center">
+        <li *ngIf="loginForm.get('password')?.getError('required')">password is required</li>
+        <li *ngIf="loginForm.get('password')?.getError('pattern')">password mast be contains upper, lower character and
+          numbers</li>
+      </ul>
+
+      <label for="password">Password</label>
+
+      <div class="showPassword btn btn-bg-main me-5 mt-2 p-2 d-flex justify-content-center align-items-center"
+        (click)="changeShowPassword()">
+        <div *ngIf="showPassword">
+          <i class="fa-regular fa-eye"></i>
+        </div>
+        <div *ngIf="!showPassword">
+          <i class="fa fa-eye-slash"></i>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <a class="text-capitalize" routerLink="/forgetPassword">Forget Password?</a>
+    </div>
+
+    <button [disabled]="loginForm.invalid" type="submit" id="btn-login" class="btn btn-bg-main my-2">
+      <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></i>
+      <span *ngIf="!isLoading">Login</span>
+    </button>
+  </form>
+
+</div>

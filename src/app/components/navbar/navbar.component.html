@@ -1,0 +1,93 @@
+<!-- bs5-navbar-default -->
+<nav class="navbar navbar-expand-sm navbar-light bg-main fixed-top">
+  <div class="container d-flex align-items-end">
+    <div class="logo">
+      <a class="navbar-brand" routerLink="/home">
+        <img class="w-100" src="./assets/images/logo.PNG" alt="">
+      </a>
+    </div>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0 d-flex align-items-center w-100">
+        <div *ngIf="isLogin" class="me-lg-auto">
+          <ul class="navbar-nav mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-capitalize header-main" routerLink="/home" routerLinkActive="active">
+                <i class="fa-solid fa-house"></i> home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-capitalize header-main" routerLink="/category" routerLinkActive="active">
+                <i class="fa-brands fa-square-font-awesome"></i> category</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-capitalize header-main" routerLink="/brands" routerLinkActive="active">
+                <i class="fa-brands fa-staylinked"></i> brands</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-capitalize header-main" routerLink="/product" routerLinkActive="active">
+                <i class="fa-brands fa-product-hunt"></i> product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-capitalize header-main" routerLink="/allorders" routerLinkActive="active">
+                <i class="fa-brands fa-first-order"></i> All Orders</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ms-lg-auto">
+          <ul class="navbar-nav mt-2 mt-lg-0 d-flex align-items-center">
+            <li *ngIf="isLogin" class="nav-item ">
+              <a class="nav-link text-capitalize header-main" routerLink="/wishlist" routerLinkActive="active">
+                <i class="fa-solid fa-heart"></i>
+              </a>
+            </li>
+
+            <li *ngIf="isLogin" class="nav-item ">
+              <a class="nav-link text-capitalize header-main" routerLink="/cart" routerLinkActive="active">
+                <button type="button" class="btn position-relative">
+                  <i class="header-main fa-solid fa-shopping-cart"></i>
+
+                  <span class="btn-bg-main position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{numOfCartItems}}
+                  </span>
+                </button>
+              </a>
+            </li>
+
+            <li *ngIf="!isLogin" class="nav-item ">
+              <a class="nav-link text-capitalize header-main" routerLink="/login" routerLinkActive="active">
+                <i class="fa-solid fa-right-to-bracket"></i> login</a>
+            </li>
+
+            <li *ngIf="!isLogin" class="nav-item">
+              <a class="nav-link text-capitalize header-main" routerLink="/register" routerLinkActive="active">
+                <i class="fa-solid fa-address-card"></i> register</a>
+            </li>
+
+            <li *ngIf="isLogin" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle header-main cursor-pointer" id="dropdownId" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-gear"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" routerLink="/changeData" routerLinkActive="active">
+                  <i class="fa-solid fa-table"></i> Change Data</a>
+                <a class="dropdown-item" routerLink="/changePassword" routerLinkActive="active">
+                  <i class="fa-solid fa-unlock"></i> Change Password</a>
+                <a class="dropdown-item cursor-pointer" (click)="logout()">
+                  <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
